@@ -13,7 +13,7 @@ final class AppDetailWhatsNewViewController: UIViewController {
     // MARK: - Private properties
 
     private let app: ITunesApp
-
+    private let whatsNewModelFactory: AppDetailWhatsNewModelFactory
     private var appDetailWhatsNewView: AppDetailWhatsNewView? {
         return self.isViewLoaded ? self.view as? AppDetailWhatsNewView : nil
     }
@@ -22,6 +22,8 @@ final class AppDetailWhatsNewViewController: UIViewController {
 
     init(app: ITunesApp) {
         self.app = app
+        self.whatsNewModelFactory = AppDetailWhatsNewModelFactory()
+        
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -44,9 +46,9 @@ final class AppDetailWhatsNewViewController: UIViewController {
     // MARK: - Private functions
 
     private func setupData() {
-        appDetailWhatsNewView?.versionTitle.text = app.version
-        appDetailWhatsNewView?.releaseDateTitle.text = app.releaseDate
-        appDetailWhatsNewView?.descriptionTitle.text = app.releaseNotes
+        let whatsNewModel = whatsNewModelFactory.constructViewModel(from: app)
+
+        appDetailWhatsNewView?.setupData(whatsNewModel)
     }
 
 }

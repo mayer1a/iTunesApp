@@ -65,6 +65,14 @@ final class AppDetailWhatsNewView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Functions
+
+    func setupData(_ model: WhatsNewModel) {
+        versionTitle.text = model.version
+        releaseDateTitle.text = model.releaseDate
+        descriptionTitle.text = model.releaseNotes
+    }
+
     // MARK: - Private functions
 
     private func configureComponents() {
