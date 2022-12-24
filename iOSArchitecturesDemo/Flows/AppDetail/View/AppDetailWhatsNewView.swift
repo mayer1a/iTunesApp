@@ -12,7 +12,7 @@ final class AppDetailWhatsNewView: UIView {
 
     // MARK: - Properties
 
-    private(set) lazy var headerTitle: UILabel = {
+    private lazy var headerTitle: UILabel = {
         let label = UILabel()
         label.textColor = .black
         label.font = UIFont.boldSystemFont(ofSize: 20.0)
