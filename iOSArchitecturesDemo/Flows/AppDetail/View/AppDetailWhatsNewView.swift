@@ -47,8 +47,7 @@ final class AppDetailWhatsNewView: UIView {
         let label = UILabel()
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 14.0)
-        label.numberOfLines = 1
-        label.text = "Что нового"
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
 
         return label
@@ -69,6 +68,8 @@ final class AppDetailWhatsNewView: UIView {
     // MARK: - Private functions
 
     private func configureComponents() {
+        translatesAutoresizingMaskIntoConstraints = false
+
         addSubview(headerTitle)
         addSubview(versionTitle)
         addSubview(releaseDateTitle)
