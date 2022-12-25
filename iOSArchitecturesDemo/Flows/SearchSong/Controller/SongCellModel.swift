@@ -10,11 +10,10 @@ import Foundation
 
 struct SongCellModel {
     let songName: String
-    let songArtist: String
-    let songAlbum: String
     let isExplicitContent: Bool
-    let songCost: Double
+    let songCost: String
     let artworkUrl: URL?
+    let subtitile: String
 }
 
 final class SongCellModelFactory {
@@ -24,10 +23,8 @@ final class SongCellModelFactory {
     func construct(from itunesSongModel: ITunesSong) -> SongCellModel {
         let songName = itunesSongModel.trackName
         let isExplicitContent = itunesSongModel.advisoryRating == "Explicit" ? true : false
-        let songCost = itunesSongModel.cost
-        let songAlbum = itunesSongModel.collectionName
-        let songArtist = itunesSongModel.artistName
-
+        let songCost = "\(itunesSongModel.cost) $"
+        let subtitle = "\(itunesSongModel.artistName ?? "") - \(itunesSongModel.collectionName ?? "")"
         var artworkUrl: URL? = nil
 
         if let artwork = itunesSongModel.artwork {
@@ -35,10 +32,9 @@ final class SongCellModelFactory {
         }
 
         return SongCellModel(songName: songName,
-                             songArtist: songArtist ?? "",
-                             songAlbum: songAlbum ?? "",
                              isExplicitContent: isExplicitContent,
                              songCost: songCost,
-                             artworkUrl: artworkUrl)
+                             artworkUrl: artworkUrl,
+                             subtitile: subtitle)
     }
 }
