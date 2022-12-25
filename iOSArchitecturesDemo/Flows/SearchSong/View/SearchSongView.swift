@@ -53,7 +53,7 @@ final class SearchSongView: UIView {
     private func addSearchBar() {
         searchBar.searchBarStyle = .minimal
         searchBar.placeholder = "Название музыки, имя артиста и др."
-        searchBar.showsCancelButton = true
+        searchBar.showsCancelButton = false
         searchBar.returnKeyType = .search
         searchBar.translatesAutoresizingMaskIntoConstraints = false
 

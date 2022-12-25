@@ -53,13 +53,12 @@ final class SearchSongViewController: UIViewController {
     // MARK: - Lifecycle
 
     override func loadView() {
-        self.view = SearchView()
+        super.loadView()
+        self.view = SearchSongView()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        navigationController?.navigationBar.prefersLargeTitles = true
 
         searchSongView?.searchBar.delegate = self
         searchSongView?.tableView.register(SongCellTableViewCell.self, forCellReuseIdentifier: Constants.reuseIdentifier)
@@ -108,16 +107,27 @@ extension SearchSongViewController: UITableViewDelegate {
 extension SearchSongViewController: UISearchBarDelegate {
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let query = searchBar.text else {
-            searchBar.resignFirstResponder()
-            return
-        }
-        if query.count == 0 {
+        guard let query = searchBar.text, query.count != 0 else {
             searchBar.resignFirstResponder()
             return
         }
 
+        searchBar.resignFirstResponder()
         self.presenter.viewDidSearch(with: query)
+    }
+
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
+    }
+
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
     }
 }
 
