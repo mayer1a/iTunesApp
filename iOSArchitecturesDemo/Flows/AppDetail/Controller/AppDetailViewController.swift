@@ -16,6 +16,7 @@ final class AppDetailViewController: UIViewController {
     
     lazy var headerViewController = AppDetailHeaderViewController(app: self.app)
     lazy var whatsNewViewController = AppDetailWhatsNewViewController(app: self.app)
+    lazy var screenshotsViewController = AppDetailCollectionViewController(app: self.app)
     
     // MARK: - Construction
     
@@ -43,6 +44,7 @@ final class AppDetailViewController: UIViewController {
         navigationItem.largeTitleDisplayMode = .never
         addHeaderViewController()
         addDescriptionViewController()
+        addScreenshotsViewController()
     }
     
     private func addHeaderViewController() {
@@ -67,6 +69,18 @@ final class AppDetailViewController: UIViewController {
             whatsNewViewController.view.topAnchor.constraint(equalTo: self.headerViewController.view.bottomAnchor),
             whatsNewViewController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor),
             whatsNewViewController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor)
+        ])
+    }
+
+    private func addScreenshotsViewController() {
+        addChild(screenshotsViewController)
+        view.addSubview(screenshotsViewController.view)
+        screenshotsViewController.didMove(toParent: self)
+
+        NSLayoutConstraint.activate([
+            screenshotsViewController.view.topAnchor.constraint(equalTo: self.whatsNewViewController.view.bottomAnchor),
+            screenshotsViewController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+            screenshotsViewController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor)
         ])
     }
 }
