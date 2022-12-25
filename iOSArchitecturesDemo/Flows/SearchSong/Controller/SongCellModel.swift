@@ -23,7 +23,13 @@ final class SongCellModelFactory {
     func construct(from itunesSongModel: ITunesSong) -> SongCellModel {
         let songName = itunesSongModel.trackName
         let isExplicitContent = itunesSongModel.advisoryRating == "Explicit" ? true : false
-        let songCost = "\(itunesSongModel.cost) $"
+
+        var songCost = "Free"
+
+        if let cost = itunesSongModel.cost {
+            songCost = "\(cost) $"
+        }
+
         let subtitle = "\(itunesSongModel.artistName ?? "") - \(itunesSongModel.collectionName ?? "")"
         var artworkUrl: URL? = nil
 
