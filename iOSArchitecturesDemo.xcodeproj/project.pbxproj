@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		498299AC29582B2500EB1D6E /* SearchSongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498299AB29582B2500EB1D6E /* SearchSongView.swift */; };
+		498299AF295834FF00EB1D6E /* SongCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498299AE295834FF00EB1D6E /* SongCellTableViewCell.swift */; };
 		49900A712957626300EF7D9C /* AppDetailWhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49900A702957626300EF7D9C /* AppDetailWhatsNewView.swift */; };
 		49900A73295768D800EF7D9C /* AppDetailWhatsNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49900A72295768D800EF7D9C /* AppDetailWhatsNewViewController.swift */; };
 		49900A762957844300EF7D9C /* AppDetailWhatsNewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49900A752957844300EF7D9C /* AppDetailWhatsNewModelFactory.swift */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		498299AB29582B2500EB1D6E /* SearchSongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSongView.swift; sourceTree = "<group>"; };
+		498299AE295834FF00EB1D6E /* SongCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongCellTableViewCell.swift; sourceTree = "<group>"; };
 		49900A702957626300EF7D9C /* AppDetailWhatsNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailWhatsNewView.swift; sourceTree = "<group>"; };
 		49900A72295768D800EF7D9C /* AppDetailWhatsNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailWhatsNewViewController.swift; sourceTree = "<group>"; };
 		49900A752957844300EF7D9C /* AppDetailWhatsNewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailWhatsNewModelFactory.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				498299AB29582B2500EB1D6E /* SearchSongView.swift */,
+				498299AE295834FF00EB1D6E /* SongCellTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -475,6 +478,7 @@
 				E0E1D3D1203C48D70011E01A /* AppDetailViewController.swift in Sources */,
 				E0E1D358203ADC590011E01A /* NetworkManager.swift in Sources */,
 				E0E1D39C203AE6420011E01A /* ITunesSong.swift in Sources */,
+				498299AF295834FF00EB1D6E /* SongCellTableViewCell.swift in Sources */,
 				E0E1D2952034A3350011E01A /* SearchViewController.swift in Sources */,
 				DDA5B1AD27C3B25A003BD45B /* SearchPresenteer.swift in Sources */,
 				E0E1D39F203AE7400011E01A /* ImageDownloader.swift in Sources */,
