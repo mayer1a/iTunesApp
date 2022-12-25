@@ -12,6 +12,7 @@
 		498299B229583D9D00EB1D6E /* SongCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498299B129583D9D00EB1D6E /* SongCellModel.swift */; };
 		498299B72958506300EB1D6E /* SearchSongPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498299B62958506300EB1D6E /* SearchSongPresenter.swift */; };
 		498299BE295852E500EB1D6E /* SearchSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498299BD295852E500EB1D6E /* SearchSongViewController.swift */; };
+		498299C12958537100EB1D6E /* SearchSongModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498299C02958537100EB1D6E /* SearchSongModuleBuilder.swift */; };
 		49900A712957626300EF7D9C /* AppDetailWhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49900A702957626300EF7D9C /* AppDetailWhatsNewView.swift */; };
 		49900A73295768D800EF7D9C /* AppDetailWhatsNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49900A72295768D800EF7D9C /* AppDetailWhatsNewViewController.swift */; };
 		49900A762957844300EF7D9C /* AppDetailWhatsNewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49900A752957844300EF7D9C /* AppDetailWhatsNewModelFactory.swift */; };
@@ -47,6 +48,7 @@
 		498299B129583D9D00EB1D6E /* SongCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongCellModel.swift; sourceTree = "<group>"; };
 		498299B62958506300EB1D6E /* SearchSongPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSongPresenter.swift; sourceTree = "<group>"; };
 		498299BD295852E500EB1D6E /* SearchSongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSongViewController.swift; sourceTree = "<group>"; };
+		498299C02958537100EB1D6E /* SearchSongModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSongModuleBuilder.swift; sourceTree = "<group>"; };
 		49900A702957626300EF7D9C /* AppDetailWhatsNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailWhatsNewView.swift; sourceTree = "<group>"; };
 		49900A72295768D800EF7D9C /* AppDetailWhatsNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailWhatsNewViewController.swift; sourceTree = "<group>"; };
 		49900A752957844300EF7D9C /* AppDetailWhatsNewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailWhatsNewModelFactory.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 		498299AA29582AF500EB1D6E /* SearchSong */ = {
 			isa = PBXGroup;
 			children = (
+				498299BF2958536100EB1D6E /* Builder */,
 				498299B52958505200EB1D6E /* Presenter */,
 				498299AD29582B4600EB1D6E /* View */,
 				498299B029583D8D00EB1D6E /* Controller */,
@@ -135,6 +138,14 @@
 				498299B62958506300EB1D6E /* SearchSongPresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		498299BF2958536100EB1D6E /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				498299C02958537100EB1D6E /* SearchSongModuleBuilder.swift */,
+			);
+			path = Builder;
 			sourceTree = "<group>";
 		};
 		49900A742957840800EF7D9C /* AppDetailModelFactory */ = {
@@ -509,6 +520,7 @@
 				E0E1D39F203AE7400011E01A /* ImageDownloader.swift in Sources */,
 				498299B229583D9D00EB1D6E /* SongCellModel.swift in Sources */,
 				498299BE295852E500EB1D6E /* SearchSongViewController.swift in Sources */,
+				498299C12958537100EB1D6E /* SearchSongModuleBuilder.swift in Sources */,
 				F8114FBE22A3DBF400102830 /* SearchView.swift in Sources */,
 				E0E1D395203AE5E20011E01A /* ITunesSearchResult.swift in Sources */,
 				E0E1D392203AE58B0011E01A /* ITunesSearchService.swift in Sources */,
