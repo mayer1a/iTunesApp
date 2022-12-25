@@ -11,6 +11,7 @@ import UIKit
 public extension UIColor {
     
     static let varna = UIColor.rgb(40.0, 35.0, 80.0)
+    static let explicitRed = UIColor.rgb(190.0, 45.0, 60.0)
 }
 
 public extension UIColor {
