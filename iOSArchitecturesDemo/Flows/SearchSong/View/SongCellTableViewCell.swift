@@ -35,10 +35,12 @@ final class SongCellTableViewCell: UITableViewCell {
     }()
 
     private(set) lazy var explicitLabel: UILabel = {
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 15, height: 15))
+        let label = UILabel()
         label.textColor = .white
+        label.text = "E"
+        label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 12.0)
-        label.backgroundColor = .systemRed
+        label.backgroundColor = .explicitRed
         label.isHidden = true
         label.translatesAutoresizingMaskIntoConstraints = false
 
@@ -49,8 +51,15 @@ final class SongCellTableViewCell: UITableViewCell {
         let button = UIButton()
         button.layer.borderColor = UIColor.systemBlue.cgColor
         button.layer.borderWidth = 1
+        button.layer.cornerRadius = 5
         button.layer.masksToBounds = true
+        button.setTitleColor(UIColor.systemBlue, for: .normal)
+        button.contentEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
         button.backgroundColor = availableBakgroundColor
+        button.setContentHuggingPriority(UILayoutPriority(252), for: .horizontal)
+        button.setContentHuggingPriority(UILayoutPriority(252), for: .vertical)
+        button.setContentCompressionResistancePriority(UILayoutPriority(752), for: .horizontal)
+        button.setContentCompressionResistancePriority(UILayoutPriority(752), for: .vertical)
         button.translatesAutoresizingMaskIntoConstraints = false
 
         return button
@@ -65,6 +74,16 @@ final class SongCellTableViewCell: UITableViewCell {
     }()
 
     // MARK: - Private properties
+
+    private lazy var titlesStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 4
+        stackView.contentMode = .scaleAspectFit
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+
+        return stackView
+    }()
 
     private lazy var availableBakgroundColor: UIColor = {
         if #available(iOS 13.0, *) {
@@ -100,6 +119,7 @@ final class SongCellTableViewCell: UITableViewCell {
         [titleLabel, subtitleLabel].forEach { $0.text = nil }
         buyButton.setTitle(" ", for: .normal)
         explicitLabel.isHidden = true
+        songImage.image = nil
     }
 
     // MARK: - Functions
@@ -114,60 +134,56 @@ final class SongCellTableViewCell: UITableViewCell {
     // MARK: - Private functions
 
     private func configureUI() {
-        addSongImageView()
-        addTitleLabel()
-        addSubtitleLabel()
-        addExplicitLabel()
-        addBuyButton()
+        addSubviewUIComponents()
+        addSongImageViewConstraints()
+        addTitleStackViewConstraints()
+        addExplicitLabelConstraints()
+        addBuyButtonConstraints()
     }
 
-    private func addSongImageView() {
-        contentView.addSubview(songImage)
+    private func addSubviewUIComponents() {
+        titlesStackView.addArrangedSubview(titleLabel)
+        titlesStackView.addArrangedSubview(subtitleLabel)
 
+        contentView.addSubview(songImage)
+        contentView.addSubview(titlesStackView)
+        contentView.addSubview(explicitLabel)
+        contentView.addSubview(buyButton)
+    }
+
+    private func addSongImageViewConstraints() {
         NSLayoutConstraint.activate([
             songImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12.0),
-            songImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8.0),
-            songImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8.0),
-            songImage.heightAnchor.constraint(equalToConstant: 64.0),
-            songImage.widthAnchor.constraint(equalToConstant: 64.0)
+            songImage.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 8.0),
+            songImage.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -8.0),
+            songImage.heightAnchor.constraint(equalToConstant: 64),
+            songImage.widthAnchor.constraint(equalTo: songImage.heightAnchor)
         ])
     }
 
-    private func addTitleLabel() {
-        contentView.addSubview(titleLabel)
-
+    private func addTitleStackViewConstraints() {
         NSLayoutConstraint.activate([
-            titleLabel.bottomAnchor.constraint(equalTo: songImage.centerYAnchor, constant: -4),
-            titleLabel.leadingAnchor.constraint(equalTo: songImage.trailingAnchor, constant: 12.0),
-            titleLabel.trailingAnchor.constraint(equalTo: explicitLabel.leadingAnchor, constant: -12.0)
+            titlesStackView.centerYAnchor.constraint(greaterThanOrEqualTo: songImage.centerYAnchor),
+            titlesStackView.leadingAnchor.constraint(equalTo: songImage.trailingAnchor, constant: 12.0),
+            titlesStackView.trailingAnchor.constraint(equalTo: explicitLabel.leadingAnchor, constant: -12.0)
         ])
     }
 
-    private func addSubtitleLabel() {
-        contentView.addSubview(subtitleLabel)
-
+    private func addExplicitLabelConstraints() {
         NSLayoutConstraint.activate([
-            subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4.0),
-            subtitleLabel.leadingAnchor.constraint(equalTo: songImage.trailingAnchor, constant: 12.0),
-            subtitleLabel.trailingAnchor.constraint(lessThanOrEqualTo: buyButton.leadingAnchor, constant: -40.0)
+            explicitLabel.trailingAnchor.constraint(lessThanOrEqualTo: buyButton.leadingAnchor, constant: -20.0),
+            explicitLabel.centerYAnchor.constraint(equalTo: titlesStackView.centerYAnchor),
+            explicitLabel.widthAnchor.constraint(equalToConstant: 13),
+            explicitLabel.heightAnchor.constraint(equalToConstant: 13)
         ])
     }
 
-    private func addExplicitLabel() {
-        contentView.addSubview(explicitLabel)
-
-        NSLayoutConstraint.activate([
-            explicitLabel.trailingAnchor.constraint(lessThanOrEqualTo: buyButton.leadingAnchor, constant: -40.0),
-            explicitLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor)
-        ])
-    }
-
-    private func addBuyButton() {
-        contentView.addSubview(buyButton)
-
+    private func addBuyButtonConstraints() {
         NSLayoutConstraint.activate([
             buyButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12.0),
-            buyButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+            buyButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            buyButton.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 20),
+            buyButton.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -20)
         ])
     }
 }
