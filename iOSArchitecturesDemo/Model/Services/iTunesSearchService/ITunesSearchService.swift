@@ -17,7 +17,7 @@ final class ITunesSearchService {
     private let decoder = JSONDecoder()
     
     private let baseUrl = "https://itunes.apple.com/search"
-    private let defaultRegionCode = "RU"
+    private let defaultRegionCode = "ru"
     
     private enum MediaType: String {
         case apps = "software"
@@ -28,6 +28,7 @@ final class ITunesSearchService {
         static let query = "term"
         static let regionCode = "country"
         static let mediaType = "media"
+        static let resultsLimit = "limit"
     }
     
     public func getApps(forQuery query: String, then completion: CompletionApps?) {
@@ -62,11 +63,12 @@ final class ITunesSearchService {
     }
     
     public func getSongs(forQuery query: String, completion: CompletionSongs?) {
-        let regionCode = Locale.current.regionCode ?? defaultRegionCode
+        let regionCode = Locale.current.regionCode?.lowercased() ?? defaultRegionCode
         var parameters: Parameters = [:]
         parameters[Parameter.query] = query
         parameters[Parameter.regionCode] = regionCode
         parameters[Parameter.mediaType] = MediaType.music.rawValue
+        parameters[Parameter.resultsLimit] = 25
 
         let request = WebRequest(method: .get, url: baseUrl, parameters: parameters)
 
