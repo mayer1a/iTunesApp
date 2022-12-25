@@ -148,14 +148,6 @@
 			path = Builder;
 			sourceTree = "<group>";
 		};
-		49900A742957840800EF7D9C /* AppDetailModelFactory */ = {
-			isa = PBXGroup;
-			children = (
-				49900A752957844300EF7D9C /* AppDetailWhatsNewModelFactory.swift */,
-			);
-			path = AppDetailModelFactory;
-			sourceTree = "<group>";
-		};
 		DB95456C2F2DCD400ABCE8E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -324,6 +316,7 @@
 				E0E1D3D0203C48D70011E01A /* AppDetailViewController.swift */,
 				DDA5B1A927C25CF5003BD45B /* AppDetailHeaderViewController.swift */,
 				49900A72295768D800EF7D9C /* AppDetailWhatsNewViewController.swift */,
+				49900A752957844300EF7D9C /* AppDetailWhatsNewModelFactory.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -359,7 +352,6 @@
 		F8A1E0402248511B00FE6448 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				49900A742957840800EF7D9C /* AppDetailModelFactory */,
 				E0E1D385203AE3E00011E01A /* AppStartManager */,
 				E0E1D393203AE5AA0011E01A /* iTunesSearchService */,
 				E0E1D39D203AE7230011E01A /* ImageDownloader */,
