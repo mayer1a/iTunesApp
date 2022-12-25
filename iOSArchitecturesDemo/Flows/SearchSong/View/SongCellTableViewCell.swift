@@ -56,6 +56,14 @@ final class SongCellTableViewCell: UITableViewCell {
         return button
     }()
 
+    private(set) lazy var songImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.backgroundColor = availableBakgroundColor
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+
+        return imageView
+    }()
+
     // MARK: - Private properties
 
     private lazy var availableBakgroundColor: UIColor = {
@@ -106,18 +114,31 @@ final class SongCellTableViewCell: UITableViewCell {
     // MARK: - Private functions
 
     private func configureUI() {
+        addSongImageView()
         addTitleLabel()
         addSubtitleLabel()
         addExplicitLabel()
         addBuyButton()
     }
 
+    private func addSongImageView() {
+        contentView.addSubview(songImage)
+
+        NSLayoutConstraint.activate([
+            songImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12.0),
+            songImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8.0),
+            songImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8.0),
+            songImage.heightAnchor.constraint(equalToConstant: 64.0),
+            songImage.widthAnchor.constraint(equalToConstant: 64.0)
+        ])
+    }
+
     private func addTitleLabel() {
         contentView.addSubview(titleLabel)
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8.0),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12.0),
+            titleLabel.bottomAnchor.constraint(equalTo: songImage.centerYAnchor, constant: -4),
+            titleLabel.leadingAnchor.constraint(equalTo: songImage.trailingAnchor, constant: 12.0),
             titleLabel.trailingAnchor.constraint(equalTo: explicitLabel.leadingAnchor, constant: -12.0)
         ])
     }
@@ -127,7 +148,7 @@ final class SongCellTableViewCell: UITableViewCell {
 
         NSLayoutConstraint.activate([
             subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4.0),
-            subtitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12.0),
+            subtitleLabel.leadingAnchor.constraint(equalTo: songImage.trailingAnchor, constant: 12.0),
             subtitleLabel.trailingAnchor.constraint(lessThanOrEqualTo: buyButton.leadingAnchor, constant: -40.0)
         ])
     }
@@ -137,7 +158,7 @@ final class SongCellTableViewCell: UITableViewCell {
 
         NSLayoutConstraint.activate([
             explicitLabel.trailingAnchor.constraint(lessThanOrEqualTo: buyButton.leadingAnchor, constant: -40.0),
-            explicitLabel.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor)
+            explicitLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor)
         ])
     }
 
@@ -149,5 +170,4 @@ final class SongCellTableViewCell: UITableViewCell {
             buyButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
     }
-
 }
