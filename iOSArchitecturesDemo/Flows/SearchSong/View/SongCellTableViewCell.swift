@@ -104,11 +104,11 @@ final class SongCellTableViewCell: UITableViewCell {
 
     // MARK: - Functions
 
-    func configure(with cellModel: ITunesSong) {
-        titleLabel.text = cellModel.trackName
-        subtitleLabel.text = "\(cellModel.artistName) - \(cellModel.collectionName) - \(cellModel.artwork)"
-        buyButton.setTitle("cost", for: .normal)
-        explicitLabel.isHidden = false // cellModel.isExplicit
+    func configure(with cellModel: SongCellModel) {
+        titleLabel.text = cellModel.songName
+        subtitleLabel.text = cellModel.subtitile
+        buyButton.setTitle(cellModel.songCost, for: .normal)
+        explicitLabel.isHidden = !cellModel.isExplicitContent
     }
 
     // MARK: - Private functions
