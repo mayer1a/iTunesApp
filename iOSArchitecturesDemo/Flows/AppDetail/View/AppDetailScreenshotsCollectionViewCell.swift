@@ -12,7 +12,7 @@ final class AppDetailScreenshotsCollectionViewCell: UICollectionViewCell {
 
     // MARK: - Private properties
 
-    private lazy var imageView: UIImageView = {
+    private(set) lazy var imageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.backgroundColor = .white
         imageView.contentMode = .scaleAspectFit
