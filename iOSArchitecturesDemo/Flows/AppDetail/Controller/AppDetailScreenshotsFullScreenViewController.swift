@@ -22,9 +22,11 @@ final class AppDetailScreenshotsFullScreenViewController: UIViewController {
 
     private lazy var itemSizeWithInsets: CGSize = {
         guard let itemSize = screenshotsView?.safeAreaLayoutGuide.layoutFrame else { return .zero }
-
+        
         let leftRightInsets = sectionInset.left + sectionInset.right
-        let resultSize = CGSize(width: itemSize.width - leftRightInsets, height: itemSize.height)
+        let width = itemSize.width - leftRightInsets
+
+        let resultSize = CGSize(width: width, height: width * 1.77)
 
         return resultSize
     }()
@@ -58,6 +60,7 @@ final class AppDetailScreenshotsFullScreenViewController: UIViewController {
 
         screenshotsView?.collectionView.delegate = self
         screenshotsView?.collectionView.dataSource = self
+        screenshotsView?.collectionView.isPagingEnabled = true
     }
     
 }
