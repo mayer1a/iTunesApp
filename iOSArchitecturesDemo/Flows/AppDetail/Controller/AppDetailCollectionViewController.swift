@@ -55,6 +55,8 @@ final class AppDetailCollectionViewController: UIViewController {
 
         screenshotsView?.collectionView.delegate = self
         screenshotsView?.collectionView.dataSource = self
+
+
     }
 
     // MARK: - Private functions
@@ -94,7 +96,15 @@ extension AppDetailCollectionViewController: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegate
 
-extension AppDetailCollectionViewController: UICollectionViewDelegate { }
+extension AppDetailCollectionViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let destinationViewController = AppDetailScreenshotsFullScreenViewController(images: images)
+
+        navigationController?.present(destinationViewController, animated: true)
+
+    }
+}
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
