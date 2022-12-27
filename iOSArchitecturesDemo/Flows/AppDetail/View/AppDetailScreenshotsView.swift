@@ -25,8 +25,8 @@ final class AppDetailScreenshotsView: UIView {
 
     let collectionViewLayout: UICollectionViewFlowLayout = {
         let collectionViewLayout = UICollectionViewFlowLayout()
-        collectionViewLayout.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 0)
-        collectionViewLayout.itemSize = CGSize(width: 92, height: 200)
+        collectionViewLayout.sectionInset = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
+        collectionViewLayout.itemSize = CGSize(width: 225, height: 400)
         collectionViewLayout.scrollDirection = .horizontal
 
         return collectionViewLayout
@@ -37,6 +37,7 @@ final class AppDetailScreenshotsView: UIView {
         collectionView.setCollectionViewLayout(collectionViewLayout, animated: true)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .white
+        collectionView.showsHorizontalScrollIndicator = false
 
         return collectionView
     }()
@@ -59,6 +60,7 @@ final class AppDetailScreenshotsView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
 
         collectionView.backgroundColor = .white
+        backgroundColor = .white
 
         addSubview(collectionView)
 
@@ -67,7 +69,7 @@ final class AppDetailScreenshotsView: UIView {
 
     private func addCollectionViewConstraints() {
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)

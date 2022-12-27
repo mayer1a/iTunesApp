@@ -81,7 +81,7 @@ extension AppDetailCollectionViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let dequedCell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.reuseIdentifier,
-                                                      for: indexPath)
+                                                            for: indexPath)
 
         guard let cell = dequedCell as? AppDetailScreenshotsCollectionViewCell else { return UICollectionViewCell() }
 
@@ -98,4 +98,14 @@ extension AppDetailCollectionViewController: UICollectionViewDelegate { }
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
-extension AppDetailCollectionViewController: UICollectionViewDelegateFlowLayout { }
+extension AppDetailCollectionViewController: UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        12.0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        12.0
+    }
+
+}

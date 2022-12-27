@@ -16,6 +16,11 @@ final class AppDetailScreenshotsCollectionViewCell: UICollectionViewCell {
         let imageView = UIImageView(frame: .zero)
         imageView.backgroundColor = .white
         imageView.contentMode = .scaleAspectFit
+        imageView.layer.cornerRadius = 20
+        imageView.layer.borderColor = UIColor.white.cgColor
+        imageView.layer.borderWidth = 1
+        imageView.layer.masksToBounds = true
+        imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
 
         return imageView

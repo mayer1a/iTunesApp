@@ -35,7 +35,7 @@ final class AppDetailViewController: UIViewController {
         super.viewDidLoad()
         self.configureUI()
     }
-    
+
     // MARK: - Private Functions
     
     private func configureUI() {
@@ -77,10 +77,17 @@ final class AppDetailViewController: UIViewController {
         view.addSubview(screenshotsViewController.view)
         screenshotsViewController.didMove(toParent: self)
 
+        var topBottomInsets: CGFloat = 0.0
+
+        if let collectionViewInsets = screenshotsViewController.screenshotsView?.collectionViewLayout.sectionInset {
+            topBottomInsets = collectionViewInsets.top + collectionViewInsets.bottom
+        }
+
         NSLayoutConstraint.activate([
             screenshotsViewController.view.topAnchor.constraint(equalTo: self.whatsNewViewController.view.bottomAnchor),
             screenshotsViewController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-            screenshotsViewController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor)
+            screenshotsViewController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            screenshotsViewController.view.heightAnchor.constraint(equalToConstant: 400 + topBottomInsets)
         ])
     }
 }

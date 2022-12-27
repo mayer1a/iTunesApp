@@ -18,7 +18,7 @@ final class AppDetailScreenshotsModelFactory {
     // MARK: - Functions
 
     func construct(from app: ITunesApp, completion: @escaping ([UIImage?]) -> Void) {
-        DispatchQueue.global().async { [weak self] in
+        DispatchQueue.global().sync { [weak self] in
             var images: [UIImage?] = []
 
             app.screenshotUrls.forEach {
