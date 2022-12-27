@@ -21,6 +21,7 @@
 		498299D8295AF7DB00EB1D6E /* AppDetailScreenshotsFullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498299D7295AF7DB00EB1D6E /* AppDetailScreenshotsFullScreenViewController.swift */; };
 		498299DF295B40E500EB1D6E /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498299DE295B40E500EB1D6E /* Observable.swift */; };
 		498299E5295B466900EB1D6E /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498299E4295B466900EB1D6E /* SearchRouter.swift */; };
+		498299E9295B483800EB1D6E /* SearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498299E8295B483800EB1D6E /* SearchInteractor.swift */; };
 		49900A712957626300EF7D9C /* AppDetailWhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49900A702957626300EF7D9C /* AppDetailWhatsNewView.swift */; };
 		49900A73295768D800EF7D9C /* AppDetailWhatsNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49900A72295768D800EF7D9C /* AppDetailWhatsNewViewController.swift */; };
 		49900A762957844300EF7D9C /* AppDetailWhatsNewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49900A752957844300EF7D9C /* AppDetailWhatsNewModelFactory.swift */; };
@@ -65,6 +66,7 @@
 		498299D7295AF7DB00EB1D6E /* AppDetailScreenshotsFullScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailScreenshotsFullScreenViewController.swift; sourceTree = "<group>"; };
 		498299DE295B40E500EB1D6E /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		498299E4295B466900EB1D6E /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
+		498299E8295B483800EB1D6E /* SearchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
 		49900A702957626300EF7D9C /* AppDetailWhatsNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailWhatsNewView.swift; sourceTree = "<group>"; };
 		49900A72295768D800EF7D9C /* AppDetailWhatsNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailWhatsNewViewController.swift; sourceTree = "<group>"; };
 		49900A752957844300EF7D9C /* AppDetailWhatsNewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailWhatsNewModelFactory.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 		498299AA29582AF500EB1D6E /* SearchSong */ = {
 			isa = PBXGroup;
 			children = (
+				498299E7295B482400EB1D6E /* Interactor */,
 				498299E3295B465000EB1D6E /* Router */,
 				498299BF2958536100EB1D6E /* Builder */,
 				498299B52958505200EB1D6E /* Presenter */,
@@ -187,6 +190,14 @@
 				498299E4295B466900EB1D6E /* SearchRouter.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		498299E7295B482400EB1D6E /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				498299E8295B483800EB1D6E /* SearchInteractor.swift */,
+			);
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 		DB95456C2F2DCD400ABCE8E9 /* Frameworks */ = {
@@ -541,6 +552,7 @@
 				DDA5B1B027C3B93F003BD45B /* SearchModuleBuilder.swift in Sources */,
 				498299CE2958CF7D00EB1D6E /* AppDetailScreenshotsView.swift in Sources */,
 				E0E1D399203AE62E0011E01A /* ITunesApp.swift in Sources */,
+				498299E9295B483800EB1D6E /* SearchInteractor.swift in Sources */,
 				F8A97B352249898E00FB2C0E /* AppCell.swift in Sources */,
 				498299C8295885A200EB1D6E /* AppDetailScreenshotsCollectionViewCell.swift in Sources */,
 				F8114FC522A3E77500102830 /* AppDetailView.swift in Sources */,
