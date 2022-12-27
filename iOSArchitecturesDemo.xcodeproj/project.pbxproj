@@ -19,6 +19,7 @@
 		498299D22958CFF400EB1D6E /* AppDetailScreenshotsModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498299D12958CFF400EB1D6E /* AppDetailScreenshotsModelFactory.swift */; };
 		498299D42958D1BD00EB1D6E /* AppDetailCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498299D32958D1BD00EB1D6E /* AppDetailCollectionViewController.swift */; };
 		498299D8295AF7DB00EB1D6E /* AppDetailScreenshotsFullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498299D7295AF7DB00EB1D6E /* AppDetailScreenshotsFullScreenViewController.swift */; };
+		498299DF295B40E500EB1D6E /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498299DE295B40E500EB1D6E /* Observable.swift */; };
 		49900A712957626300EF7D9C /* AppDetailWhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49900A702957626300EF7D9C /* AppDetailWhatsNewView.swift */; };
 		49900A73295768D800EF7D9C /* AppDetailWhatsNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49900A72295768D800EF7D9C /* AppDetailWhatsNewViewController.swift */; };
 		49900A762957844300EF7D9C /* AppDetailWhatsNewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49900A752957844300EF7D9C /* AppDetailWhatsNewModelFactory.swift */; };
@@ -61,6 +62,7 @@
 		498299D12958CFF400EB1D6E /* AppDetailScreenshotsModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailScreenshotsModelFactory.swift; sourceTree = "<group>"; };
 		498299D32958D1BD00EB1D6E /* AppDetailCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailCollectionViewController.swift; sourceTree = "<group>"; };
 		498299D7295AF7DB00EB1D6E /* AppDetailScreenshotsFullScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailScreenshotsFullScreenViewController.swift; sourceTree = "<group>"; };
+		498299DE295B40E500EB1D6E /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		49900A702957626300EF7D9C /* AppDetailWhatsNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailWhatsNewView.swift; sourceTree = "<group>"; };
 		49900A72295768D800EF7D9C /* AppDetailWhatsNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailWhatsNewViewController.swift; sourceTree = "<group>"; };
 		49900A752957844300EF7D9C /* AppDetailWhatsNewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailWhatsNewModelFactory.swift; sourceTree = "<group>"; };
@@ -166,6 +168,14 @@
 				498299C32958558100EB1D6E /* MainTabBarController.swift */,
 			);
 			path = MainTabBar;
+			sourceTree = "<group>";
+		};
+		498299DD295B40B800EB1D6E /* Observable */ = {
+			isa = PBXGroup;
+			children = (
+				498299DE295B40E500EB1D6E /* Observable.swift */,
+			);
+			path = Observable;
 			sourceTree = "<group>";
 		};
 		DB95456C2F2DCD400ABCE8E9 /* Frameworks */ = {
@@ -378,6 +388,7 @@
 		F8A1E0402248511B00FE6448 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				498299DD295B40B800EB1D6E /* Observable */,
 				E0E1D385203AE3E00011E01A /* AppStartManager */,
 				E0E1D393203AE5AA0011E01A /* iTunesSearchService */,
 				E0E1D39D203AE7230011E01A /* ImageDownloader */,
@@ -546,6 +557,7 @@
 				F8114FBE22A3DBF400102830 /* SearchView.swift in Sources */,
 				E0E1D395203AE5E20011E01A /* ITunesSearchResult.swift in Sources */,
 				E0E1D392203AE58B0011E01A /* ITunesSearchService.swift in Sources */,
+				498299DF295B40E500EB1D6E /* Observable.swift in Sources */,
 				E0E1D2932034A3350011E01A /* AppDelegate.swift in Sources */,
 				498299B72958506300EB1D6E /* SearchSongPresenter.swift in Sources */,
 				498299D8295AF7DB00EB1D6E /* AppDetailScreenshotsFullScreenViewController.swift in Sources */,
