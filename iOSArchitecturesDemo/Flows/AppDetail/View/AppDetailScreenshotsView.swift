@@ -12,17 +12,6 @@ final class AppDetailScreenshotsView: UIView {
 
     // MARK: - Properties
 
-    private lazy var headerTitle: UILabel = {
-        let label = UILabel()
-        label.textColor = .black
-        label.font = UIFont.boldSystemFont(ofSize: 20.0)
-        label.numberOfLines = 1
-        label.text = "Предпросмотр"
-        label.translatesAutoresizingMaskIntoConstraints = false
-
-        return label
-    }()
-
     let collectionViewLayout: UICollectionViewFlowLayout = {
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.sectionInset = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
