@@ -15,6 +15,8 @@ final class AppDetailViewController: UIViewController {
     public var app: ITunesApp
     
     lazy var headerViewController = AppDetailHeaderViewController(app: self.app)
+    lazy var whatsNewViewController = AppDetailWhatsNewViewController(app: self.app)
+    lazy var screenshotsViewController = AppDetailCollectionViewController(app: self.app)
     
     // MARK: - Construction
     
@@ -33,7 +35,7 @@ final class AppDetailViewController: UIViewController {
         super.viewDidLoad()
         self.configureUI()
     }
-    
+
     // MARK: - Private Functions
     
     private func configureUI() {
@@ -42,6 +44,7 @@ final class AppDetailViewController: UIViewController {
         navigationItem.largeTitleDisplayMode = .never
         addHeaderViewController()
         addDescriptionViewController()
+        addScreenshotsViewController()
     }
     
     private func addHeaderViewController() {
@@ -58,20 +61,33 @@ final class AppDetailViewController: UIViewController {
     }
     
     private func addDescriptionViewController() {
-        
-        // TODO: ДЗ, сделать другие сабмодули
-        
-        let descriptionViewController = UIViewController()
-        addChild(descriptionViewController)
-        view.addSubview(descriptionViewController.view)
-        descriptionViewController.didMove(toParent: self)
-        
-        descriptionViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        addChild(whatsNewViewController)
+        view.addSubview(whatsNewViewController.view)
+        whatsNewViewController.didMove(toParent: self)
+
         NSLayoutConstraint.activate([
-            descriptionViewController.view.topAnchor.constraint(equalTo: self.headerViewController.view.bottomAnchor),
-            descriptionViewController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-            descriptionViewController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-            descriptionViewController.view.heightAnchor.constraint(equalToConstant: 250.0)
+            whatsNewViewController.view.topAnchor.constraint(equalTo: self.headerViewController.view.bottomAnchor),
+            whatsNewViewController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+            whatsNewViewController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor)
+        ])
+    }
+
+    private func addScreenshotsViewController() {
+        addChild(screenshotsViewController)
+        view.addSubview(screenshotsViewController.view)
+        screenshotsViewController.didMove(toParent: self)
+
+        var topBottomInsets: CGFloat = 0.0
+
+        if let collectionViewInsets = screenshotsViewController.screenshotsView?.collectionViewLayout.sectionInset {
+            topBottomInsets = collectionViewInsets.top + collectionViewInsets.bottom
+        }
+
+        NSLayoutConstraint.activate([
+            screenshotsViewController.view.topAnchor.constraint(equalTo: self.whatsNewViewController.view.bottomAnchor),
+            screenshotsViewController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+            screenshotsViewController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            screenshotsViewController.view.heightAnchor.constraint(equalToConstant: 400 + topBottomInsets)
         ])
     }
 }
