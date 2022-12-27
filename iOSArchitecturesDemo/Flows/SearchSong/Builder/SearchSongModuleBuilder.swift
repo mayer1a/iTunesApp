@@ -13,9 +13,16 @@ final class SearchSongModuleBuilder {
     // MARK: - Functions
 
     static func build() -> (UIViewController & SearchSongViewInput) {
-        let presenter = SearchSongPresenter()
+        let router = SearchRouter()
+        let searchService = ITunesSearchService()
+        let downloadService = ImageDownloader()
+        let interactor = SearchInteractor(searchService: searchService, downloaderService: downloadService)
+        let presenter = SearchSongPresenter(interactor: interactor, router: router)
         let viewController = SearchSongViewController(presenter: presenter)
+
         presenter.viewInput = viewController
+        router.viewController = viewController
+
         return viewController
     }
 }
