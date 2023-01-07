@@ -19,6 +19,7 @@ protocol SearchSongViewInput: class {
 protocol SearchSongViewOutput: class {
     func viewDidSearch(with query: String)
     func viewDidSelectSong(_ song: ITunesSong)
+    func cellWillUpdate(fromUrl url: URL?, completion: @escaping (UIImage?) -> Void)
 }
 
 final class SearchSongPresenter {
@@ -27,12 +28,20 @@ final class SearchSongPresenter {
 
     // MARK: - Private Properties
 
-    private let searchService = ITunesSearchService()
+    private let interactor: SearchInteractorInput
+    private let router: SearchRouterInput
+
+    // MARK: - Construction
+
+    init(interactor: SearchInteractorInput, router: SearchRouterInput) {
+        self.interactor = interactor
+        self.router = router
+    }
 
     // MARK: - Private Functions
 
     private func requestSongs(with query: String) {
-        self.searchService.getSongs(forQuery: query) { [weak self] result in
+        interactor.requestSongs(with: query) { [weak self] result in
             guard let self = self else { return }
 
             self.viewInput?.throbber(show: false)
@@ -51,7 +60,16 @@ final class SearchSongPresenter {
         }
     }
 
-    private func openSongDetails(with song: ITunesSong) { }
+    private func fetchSongImage(withUrl url: URL?, completion: @escaping (UIImage?) -> Void) {
+        guard let url = url else { return }
+
+        DispatchQueue.main.async { [weak self] in
+            self?.interactor.getImage(fromUrl: url) { (image, _) in
+                completion(image)
+            }
+        }
+    }
+
 }
 
 // MARK: - SearchViewOutput
@@ -66,6 +84,11 @@ extension SearchSongPresenter: SearchSongViewOutput {
     }
 
     func viewDidSelectSong(_ song: ITunesSong) {
-        self.openSongDetails(with: song)
+        router.openDetails(for: song)
     }
+
+    func cellWillUpdate(fromUrl url: URL?, completion: @escaping (UIImage?) -> Void) {
+        fetchSongImage(withUrl: url, completion: completion)
+    }
+
 }

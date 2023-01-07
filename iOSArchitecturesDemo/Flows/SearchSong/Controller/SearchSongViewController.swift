@@ -30,15 +30,11 @@ final class SearchSongViewController: UIViewController {
         return isViewLoaded ? self.view as? SearchSongView : nil
     }
 
-    private let searchService = ITunesSearchService()
     private let presenter: SearchSongViewOutput
     private let songCellFactory = SongCellModelFactory()
     private let imageDownloader = ImageDownloader()
 
-    private let searchBar = UISearchBar()
-    private let tableView = UITableView()
     private let emptyResultView = UIView()
-    private let emptyResultLabel = UILabel()
 
     // MARK: - Construction
 
@@ -89,12 +85,8 @@ extension SearchSongViewController: UITableViewDataSource {
         let song = self.searchResults[indexPath.row]
         let cellModel = songCellFactory.construct(from: song)
 
-        DispatchQueue.global().async { [weak self] in
-            self?.imageDownloader.getImage(fromUrl: cellModel.artworkUrl ?? "") { (image, _) in
-                DispatchQueue.main.async {
-                    cell.songImage.image = image
-                }
-            }
+        presenter.cellWillUpdate(fromUrl: cellModel.artworkUrl) { image in
+            cell.songImage.image = image
         }
         
         cell.configure(with: cellModel)
@@ -157,7 +149,7 @@ extension SearchSongViewController: SearchSongViewInput {
     func showNoResults() {
         self.emptyResultView.isHidden = false
         self.searchResults = []
-        self.tableView.reloadData()
+        searchSongView?.tableView.reloadData()
     }
 
     func hideNoResults() {
